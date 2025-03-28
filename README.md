@@ -1,11 +1,4 @@
-<<<<<<< HEAD
-# ProdutosWeb
-<<<<<<< HEAD
-Frontend feito em angular para acesso das minha APIs
-=======
-=======
-# Aplicação de Gestão de Usuários e Produtos (Frontend)
->>>>>>> ddfa1c4 (feat: adicionado README)
+# ProdutosWeb (Frontend)
 
 Esta é uma aplicação frontend desenvolvida em **Angular**, que fornece funcionalidades para a criação e autenticação de usuários, bem como a manipulação de um conjunto de produtos, categorias e fornecedores através de operações CRUD (Criar, Ler, Atualizar e Excluir). O frontend se comunica com uma API backend que gerencia os dados dos usuários e produtos.
 
@@ -36,13 +29,13 @@ Esta é uma aplicação frontend desenvolvida em **Angular**, que fornece funcio
 1. Clone o repositório:
 
     ```bash
-    git clone https://github.com/seu-usuario/seu-repositorio.git
+    git clone https://github.com/pauloflau/ProdutosWeb.git
     ```
 
 2. Navegue até o diretório do projeto:
 
     ```bash
-    cd seu-repositorio
+    cd ProdutosWeb
     ```
 
 3. Instale as dependências do projeto:
@@ -117,9 +110,3 @@ Este projeto está licenciado sob a [MIT License](LICENSE).
 
 Se você encontrar algum problema ou tiver sugestões, sinta-se à vontade para abrir uma **issue** ou enviar um **pull request**.
 
-
-<<<<<<< HEAD
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
->>>>>>> a7bbed5 (initial commit)
-=======
->>>>>>> ddfa1c4 (feat: adicionado README)
