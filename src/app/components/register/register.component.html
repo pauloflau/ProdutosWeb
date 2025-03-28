@@ -6,28 +6,76 @@
                     <h3>Criar Conta de Usuário</h3>
                     <p>Entre com os seus dados de usuário</p>
                 </div>
-                <form>
+
+                <form [formGroup]="form" (ngSubmit)="submit()">
                     <div class="mb-3">
                         <label>Nome do usuário:</label>
-                        <input type="text" class="form-control" placeholder="Digite o nome aqui." />
+                        <input type="text" class="form-control" formControlName="nome"
+                            placeholder="Digite o nome aqui." />
+
+                        <span *ngIf="f['nome'].touched && f['nome'].invalid" class="text-danger">
+                            <span *ngIf="f['nome'].errors && f['nome'].errors['required']">
+                                Por favor, informe o seu nome.
+                            </span>
+                            <span *ngIf="f['nome'].errors && f['nome'].errors['minlength']">
+                                Por favor, informe no mínimo 4 caracteres.
+                            </span>
+                        </span>
+
                     </div>
                     <div class="mb-3">
                         <label>Email de acesso:</label>
-                        <input type="text" class="form-control" placeholder="Digite o email aqui." />
+                        <input type="text" class="form-control" formControlName="email"
+                            placeholder="Digite o email aqui." />
+
+                        <span *ngIf="f['email'].touched && f['email'].invalid" class="text-danger">
+                            <span *ngIf="f['email'].errors && f['email'].errors['required']">
+                                Por favor, informe o seu email.
+                            </span>
+                            <span *ngIf="f['email'].errors && f['email'].errors['email']">
+                                Por favor, informe um endereço de email válido.
+                            </span>
+                        </span>
+
                     </div>
                     <div class="mb-3">
                         <label>Senha de acesso:</label>
-                        <input type="password" class="form-control" placeholder="Digite a senha aqui." />
+                        <input type="password" class="form-control" formControlName="senha"
+                            placeholder="Digite a senha aqui." />
+
+                        <span *ngIf="f['senha'].touched && f['senha'].invalid" class="text-danger">
+                            <span *ngIf="f['senha'].errors && f['senha'].errors['required']">
+                                Por favor, informe a sua senha.
+                            </span>
+                            <span *ngIf="f['senha'].errors && f['senha'].errors['minlength']">
+                                Por favor, informe no mínimo 4 caracteres.
+                            </span>
+                        </span>
+
                     </div>
                     <div class="mb-3">
                         <label>Confirme a senha:</label>
-                        <input type="password" class="form-control" placeholder="Confirme a senha aqui." />
+                        <input type="password" class="form-control" formControlName="senhaConfirmacao"
+                            placeholder="Confirme a senha aqui." />
+
+                        <span *ngIf="f['senha'].touched && f['senhaConfirmacao'].invalid" class="text-danger">
+                            <span *ngIf="f['senhaConfirmacao'].errors && f['senhaConfirmacao'].errors['required']">
+                                Por favor, confirme a sua senha.
+                            </span>
+                        </span>
+                        <span class="text-danger">
+                            {{erroSenha}}
+                        </span>
                     </div>
-                    <div class="mb-3 d-grid">
-                        <button type="submit" class="btn btn-primary">
+                    <div class="mb-3 d-flex">
+                        <button type="submit" class="btn btn-primary w-50" [disabled]="form.invalid">
                             Realizar Cadastro
                         </button>
+                        <button type="reset" class="btn btn-danger w-50" [disabled]="!form.dirty">
+                            Limpar
+                        </button>
                     </div>
+                    
                 </form>
             </div>
         </div>
