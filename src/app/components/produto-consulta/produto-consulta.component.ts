@@ -25,7 +25,7 @@ export class ProdutoConsultaComponent {
     this.httpClient.get('http://localhost:8080/api' + "/produtos")
       .subscribe({
         next: (data) => { //capturar a resposta de sucesso da API
-          this.produtos = data as any[];
+          this.produtos = data as any[];          
         },
         error: (e) => { //capturar a resposta de erro da API
           console.log(e);
