@@ -7,6 +7,14 @@
                     <p>Entre com os seus dados de usuário</p>
                 </div>
 
+                <div class="text-success mb-2 text-center">
+                    <strong>{{mensagemSucesso}}</strong>
+                </div>
+
+                <div class="text-danger mb-2 text-center">
+                    <strong>{{mensagemErro}}</strong>
+                </div>
+
                 <form [formGroup]="form" (ngSubmit)="submit()">
                     <div class="mb-3">
                         <label>Nome do usuário:</label>

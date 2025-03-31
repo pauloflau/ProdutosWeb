@@ -14,31 +14,44 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <!-- Link "Acessar Sistema" -->
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="!usuarioAutenticado">
                     <a class="nav-link" routerLink="/app/login">
                         Acessar Sistema
                     </a>
                 </li>
 
                 <!-- Link "Criar conta de usuário" -->
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="!usuarioAutenticado">
                     <a class="nav-link" routerLink="/app/register">
                         Criar conta de usuário
                     </a>
                 </li>
                 <!-- Link "Cadastrar produtos" -->
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="usuarioAutenticado">
                     <a class="nav-link" routerLink="/app/produto-cadastro">
                         Cadastrar Produtos
                     </a>
                 </li>
 
                 <!-- Link "Consultar produtos" -->
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="usuarioAutenticado">
                     <a class="nav-link" routerLink="/app/produto-consulta">
                         Consultar Produtos
                     </a>
                 </li>
+
+                <!--Exibir usuario autenticado-->
+                <li class="nav-item" *ngIf="usuarioAutenticado">
+                    <div class="nav-link text-white">
+                        <strong>{{nomeUsuario}} - {{emailUsuario}}</strong>
+                    </div>
+                </li>
+                <!-- Logout do usuario-->
+                 <li class="nav-item" *ngIf="usuarioAutenticado">
+                    <button class="nav-link" (click)="logout()">
+                        Sair do Sistema
+                    </button>
+                 </li>
             </ul>
         </div>
     </div>

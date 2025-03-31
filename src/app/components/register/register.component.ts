@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { environment } from '../../../environment/environments';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +18,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 })
 export class RegisterComponent {
 
-  //erro senha
+  //variaveis
+  mensagemSucesso: string ='';
+  mensagemErro: string = '';
   erroSenha: string = '';
 
   //método construtor
@@ -54,6 +57,8 @@ export class RegisterComponent {
   //função para capturar o submit do formulário
   submit() {
     this.erroSenha = '';
+    this.mensagemErro = '';
+    this.mensagemSucesso = '';
 
     //verificando se as senhas estão iguais
     if (this.form.value.senha == this.form.value.senhaConfirmacao) {
@@ -63,13 +68,15 @@ export class RegisterComponent {
 
       //fazendo a requisição POST para a API
       this.httpClient
-        .post('http://localhost:8081/api/usuario/criar', this.form.value)
+        .post(environment.apiUsuarios + '/usuario/criar', this.form.value)
         .subscribe({
-          next: (data) => { //capturar a resposta de sucesso
-            console.log(data);
+          next: (data: any) => { //capturar a resposta de sucesso
+            //exibir mensagem sucesso
+            this.mensagemSucesso = `Parabens ${data.nome}, sua conta foi criada com sucesso.`
           },
           error: (e) => { //capturar a resposta de erro
-            console.log(e);
+            //exibir mensagem erro
+            this.mensagemErro = e.error.errors[0];
           }
         });
     }
